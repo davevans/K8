@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: colourapp
+  labels:
+    app: colourapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: colourapp
+  template:
+    metadata:
+      labels:
+        app: colourapp
+    spec:
+      containers:
+      - name: colourapp
+        image: davevans/colourapp:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: COLOUR
+          value: Red

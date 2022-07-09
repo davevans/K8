@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dav-cluster
+  region: ap-southeast-2
+
+vpc:
+  subnets:
+    public:
+      ap-southeast-2a: { id: subnet-84b155e2 }
+      ap-southeast-2b: { id: subnet-6ee1f727 }
+      ap-southeast-2c: { id: subnet-87be29df }  
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.small
+    desiredCapacity: 1
+    labels: { role: workers }
+  
