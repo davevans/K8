@@ -30,7 +30,7 @@ helm repo add eks https://aws.github.io/eks-charts
 helm upgrade -i aws-load-balancer-controller `
     eks/aws-load-balancer-controller `
     -n kube-system `
-    --set clusterName=eksworkshop-eksctl `
+    --set clusterName=${CLUSTER_NAME} `
     --set serviceAccount.create=false `
     --set serviceAccount.name=aws-load-balancer-controller `
     --set image.tag="${LBC_VERSION}" `
