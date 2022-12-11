@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: colourapp
+  name: colourapp-blue
 spec:
   selector:
-    app: colourapp
+    app: colourapp-blue
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
+      port: 81
       targetPort: 80
   type: NodePort

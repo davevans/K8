@@ -1,5 +1,5 @@
-$LBC_VERSION = "v2.4.1"
-$LBC_CHART_VERSION = "1.4.1"
+$LBC_VERSION = "v2.4.5"
+$LBC_CHART_VERSION = "1.4.6"
 $AWS_REGION = "ap-southeast-2"
 $CLUSTER_NAME = "dav-cluster"
 $ACCOUNT_ID = "289410895629"
@@ -26,6 +26,7 @@ kubectl get crd
 
 
 helm repo add eks https://aws.github.io/eks-charts
+helm repo update
 
 helm upgrade -i aws-load-balancer-controller `
     eks/aws-load-balancer-controller `
@@ -34,6 +35,7 @@ helm upgrade -i aws-load-balancer-controller `
     --set serviceAccount.create=false `
     --set serviceAccount.name=aws-load-balancer-controller `
     --set image.tag="${LBC_VERSION}" `
-    --version="${LBC_CHART_VERSION}"
+    --version="${LBC_CHART_VERSION}" `
+    --set region=$AWS_REGION
 
 kubectl -n kube-system rollout status deployment aws-load-balancer-controller    

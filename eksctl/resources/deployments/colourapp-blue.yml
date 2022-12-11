@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: colourapp
+  name: colourapp-blue
   labels:
-    app: colourapp
+    app: colourapp-blue
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: colourapp
+      app: colourapp-blue
   template:
     metadata:
       labels:
-        app: colourapp
+        app: colourapp-blue
     spec:
       containers:
       - name: colourapp
-        image: 289410895629.dkr.ecr.ap-southeast-2.amazonaws.com/colour-app:1.0.4
+        image: davevans/colourapp:latest
         ports:
         - containerPort: 80
         env:
         - name: COLOUR
-          value: Red
+          value: Blue          
